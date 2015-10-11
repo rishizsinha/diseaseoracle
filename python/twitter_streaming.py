@@ -3,6 +3,13 @@ from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler
 from tweepy import Stream
 
+# import os
+# import django
+# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "../diseaseoracle.settings")
+
+
+from mapper.models import Tweet
+
 #Variables that contains the user credentials to access Twitter API 
 access_token = "1244890776-wteM7XbRQxliqfmqgy7kB7zST6mkeprFM6CKfTy"
 access_token_secret = "GPoP1iKLaaxlEgeab2QTMUYe7BzQ21YaqjklhXWGx1GoA"
@@ -14,7 +21,7 @@ consumer_secret = "CLPlkGRwAFSJK1b1YIhRFNOxsy3Onf3jHbmGaLub2KD5p6Zfo1"
 class StdOutListener(StreamListener):
 
     def on_data(self, data):
-        print data
+        print data["text"]
         return True
 
     def on_error(self, status):
